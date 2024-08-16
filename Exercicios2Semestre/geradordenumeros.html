@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Números</title>
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #05081a;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #f4f4f4;
+        }
+
+        p {
+            color: #f4f4f4;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 5%;
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f4f4f4;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h1>Gerador de números</h1>
+        <button onclick="gerar()">Gerar número</button>
+        <button onclick="limpar()">Limpar</button>
+        <p>Cada vez que você apertar o botão acima, eu penso em um número entre 1 e 100</p>
+        <section id="result"></section>
+    </div>
+    <script>
+        function gerar() {
+            let min = 1;
+            let max = 100;
+            let dif = max - min;
+            let aleatorio = Math.random();
+            let num = min + Math.trunc(dif * aleatorio);
+            
+            let res = document.querySelector('section#result');
+            res.innerHTML += `<p>Acabei de pensar no número ${num}!</p> `;
+        }
+
+        function limpar() {
+            let res = document.querySelector('section#result');
+            res.innerHTML = null;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+/* Header */
+header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    outline: none;
+    margin-left: 10px;
+}
+
+/* Body */
+body {
+    background-color: #660000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.florlislogo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Flex container */
+.display::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Image and text containers */
+.fotomodelo, .textopag1 {
+    float: left;
+    width: 50%;
+}
+
+.fotomodelo img, .textopag1 img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Login button */
+.botao-login {
+    background-color: #400000;
+    color: #fff;
+    border: 1px solid #fff;
+    display: block;
+    width: 350px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-top: 25%;
+    margin-left: 15%;
+}
+
+/* Responsive adjustments for login button */
+@media (max-width: 768px) {
+    .botao-login {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 10%;
+    }
+}
+
+/* Flex container */
+.tworool {
+    background-color: #3D0D07;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: -100px;
+}
+
+/* Flowers section */
+.floresdateporada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Slides container */
+.slides {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.slides img {
+    vertical-align: top;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* Shop now button container */
+.botao-shopnow-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* Shop now button */
+.botao-shopnow {
+    background-color: #3D0D07;
+    color: #fff;
+    border: 1px solid #fff;
+    display: block;
+    width: 150px;
+    padding: 7.5px;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+/* Footer */
+footer {
+    color: rgb(156, 121, 121);
+    background-color: #180704;
+    text-align: justify;
+    padding: 5px ;
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    font-size: 2;
+    overflow-y: auto
+    }
+
+    footer p {
+        text-align: justify; /* Garante que o texto dentro dos parágrafos seja justificado */
+        margin: 0; /* Remove as margens padrão dos parágrafos */
+        font-size: inherit;
+    }
+
+/* Paragraphs in footer */
+footer p.legal {
+    align-self: center;
+}
+
+footer p.autoria {
+    text-align: justify;
+    align-content: space-between;
+}
+
+footer p.negrito {
+    font-weight: bolder;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fotomodelo, .textopag1 {
+        float: none;
+        width: 100%;
+    }
+
+    .fotomodelo img, .textopag1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .tworool {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .slides {
+        flex-direction: column;
+    }
+
+    .botao-shopnow {
+        width: 80%;
+        margin: 10px 0;
+    }
+}

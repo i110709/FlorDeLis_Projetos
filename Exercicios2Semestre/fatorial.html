@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatorial</title>
+</head>
+<style>
+       body{
+        background-image: url(wallpaperfat.png);
+       }
+       h1{
+        color: white;
+       }
+       h2{
+        color: white;
+       }
+       p{
+        color: white;
+       }
+</style>
+<body>
+        <h1>Calculadora de Fatorial</h1>
+        <p>Escreva um número na caixa a seguir e te mostrarei o Fatorial dele</p>
+        <input type="number" id="number" min="0" value="0">
+        <button id="calculate">Calcular</button>
+        <p>Preencha os dados acima e aperte o botão.</p>
+        <h2 id="calculating"></h2>
+        <p id="result"></p>
+    <script>
+        document.getElementById('calculate').addEventListener('click', function () {
+            var number = parseInt(document.getElementById('number').value);
+            document.getElementById('calculating').innerText = 'Calculando ' + number + '!';
+            var result = fatorial(number);
+            document.getElementById('result').innerText = result.steps + ' = ' + result.value;
+        });
+
+        function fatorial(n) {
+            if (n === 0 || n === 1) {
+                return { value: 1, steps: '1' };
+            }
+            var previous = fatorial(n - 1);
+            return { 
+                value: n * previous.value, 
+                steps: n + ' x ' + previous.steps 
+            };
+        }
+    </script>
+</body>
+</html>

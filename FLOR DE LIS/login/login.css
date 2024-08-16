@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  color: white;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("/login/loginbackgr.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 300px;
+  background-color: #3D0D07;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(32, 4, 4, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #3D0D07;
+  color: #ffffff;
+  border: 2px solid white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2{
+  align-items: center;
+  justify-content: center;
+  display: FLEX;
+  font-size: 30px;
+}
+
+.btn{
+  align-items: center;
+  justify-content: center;
+  margin-left: 5cqw;
+
+}
+
+.email{
+  background-color: #3D0D07;
+}
+
+.password{
+  background-color: #3D0D07;
+}
+
