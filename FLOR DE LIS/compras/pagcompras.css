@@ -1,0 +1,145 @@
+body {
+    background-color: #660000;
+    color: white;
+}
+header {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    margin-left: auto;  
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    outline: none;
+    margin-left: 10px;
+}
+.florlislogo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.flower-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.flower-card {
+    margin-top: 200px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.flower-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.flower-card h3 {
+    margin: 10px 0;
+}
+
+.flower-card .price {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.flower-card .ratings {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.flower-card .ratings img {
+    width: 20px;
+    height: 20px;
+}
+
+.flower-card .colors {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.flower-card .color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.favorite-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #800000;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.colors{
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.color::after{
+    border: 1 solid white;
+    border-radius: 100%;
+}
+
+.close-button {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.price{
+    color: #864d4d;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

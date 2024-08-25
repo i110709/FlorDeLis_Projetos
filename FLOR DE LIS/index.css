@@ -1,0 +1,121 @@
+header {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    margin-left: auto;  
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    outline: none;
+    margin-left: 10px;
+}
+
+body {
+    background-color: #660000;
+}
+
+.florlislogo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.fotomodelo, .textopag1 {
+    float: left;
+    width: 50%;
+  }
+  .fotomodelo, .textopag1 img {
+    max-width: 100%;
+    height: auto;
+  }
+  .display::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .botao-login {
+    background-color: #400000;
+    color: #fff;
+    border: 1px solid #fff;
+    display: block;
+    width: 350px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-top: 25%;
+    margin-left: 15%;
+  }
+  .tworool {
+    background-color: #3D0D07;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: -100px;
+  }
+  
+  .floresdateporada{
+    align-items: center;
+    margin: 0;
+  }
+  
+  .slides {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente os slides */
+    transition: transform 0.5s ease;
+    white-space: nowrap;
+    margin-bottom: 20px; /* Espaço entre os slides e o botão */
+  }
+  
+  .slides img {
+    vertical-align: top;
+    display: inline-block;
+    margin: 0 5px; /* Espaço entre as imagens */
+  }
+  
+  .botao-shopnow-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .botao-shopnow {
+    background-color: #3D0D07;
+    color: #fff;
+    border: 1px solid #fff;
+    display: block;
+    width: 150px;
+    padding: 7.5px;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 2px;
+}
+footer{
+  color: white;
+  background-color: #3D0D07;
+  text-align: justify;
+}
+p .legal{
+  align-self: center;
+}
+p .autoria{
+  text-align: justify;
+  align-content: space-between;
+}
+p.negrito{
+  font-weight: bolder;
+}

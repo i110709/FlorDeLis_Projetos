@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estações do Ano</title>
+    <style>
+        body {
+            background-image: url(wallpaperestac.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: black;
+            opacity: 0.7;
+            color: #f4f4f4;
+            padding: 45px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            color: black;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Descubra a Estação</h1>
+        <input type="text" id="month" placeholder="Informe o mês (ex: Janeiro)">
+        <button id="checkSeason">Informe aqui o mês</button>
+        <section id="result"></section>
+    </div>
+    <script>
+        document.getElementById('checkSeason').addEventListener('click', function () {
+            var month = document.getElementById('month').value.trim().toLowerCase();
+            var season = getSeason(month);
+            if (season) {
+                document.getElementById('result').innerText = 'No mês de ' + month.charAt(0).toUpperCase() + month.slice(1) + ', estamos na estação ' + season + '.';
+            } else {
+                document.getElementById('result').innerText = 'Por favor, insira um mês válido.';
+            }
+        });
+
+        function getSeason(month) {
+            var seasons = {
+                'dezembro': 'Verão', 'janeiro': 'Verão', 'fevereiro': 'Verão',
+                'março': 'Outono', 'abril': 'Outono', 'maio': 'Outono',
+                'junho': 'Inverno', 'julho': 'Inverno', 'agosto': 'Inverno',
+                'setembro': 'Primavera', 'outubro': 'Primavera', 'novembro': 'Primavera'
+            };
+            return seasons[month];
+        }
+    </script>
+</body>
+</html>

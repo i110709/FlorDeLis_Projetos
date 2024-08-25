@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperTabuada</title>
+</head>
+<style>
+*{  
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Arial";
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-image: url(wallpapercalc.png);
+}
+
+.container{
+    width: 100%;
+    max-width: 450px;
+    background-color: black;
+    opacity: 0.7;
+    padding: 15px 2%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container h1{
+    font-size: 22px;
+    color: rgb(218, 218, 218);
+    font-weight: lighter;
+    width: 100%;
+    text-align: center;
+}
+
+.container input{
+    width: 100%;
+    max-width: 50px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    outline: 0;
+    border: 1px solid rgb(100,100,100);
+    border-radius: 5px;
+    color: rgb(252, 245, 245);
+    background-color: #2b2b2b;
+}
+
+.container input::-webkit-inner-spin-button{
+    display: none;
+}
+
+.tabuada{
+    width: 100%;
+    text-align: center;
+    color: rgb(194, 194, 194);
+    font-size: 16px;
+    line-height: 32px;
+    margin: 15px 0;
+}
+
+.container button{
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.container button{
+        transition-duration: 0.4s;
+      }
+
+.container button:hover{
+
+    background-color: #2b2b2b;
+    }
+</style>
+<body>
+   
+    <div class="container">
+        <h1>Super Tabuada <input type="number"></h1>
+        <div class="tabuada">
+           
+        </div>
+        <button>Calcular</button>
+    </div>
+</body>
+<script>
+    let valor = document.querySelector(".container input")
+    let tabuada = document.querySelector(".container div.tabuada")
+    const calcular = document.querySelector(".container button")
+    
+    
+    calcular.addEventListener("click", () => {
+    
+        tabuada.innerHTML = ""
+    
+        if(Number(valor.value) < 1 || Number(valor.value) > 100){        
+    
+           
+        }else{
+    
+            for(i = 1; i <= 10; i++){
+    
+                var calc = String(i) + " x " + valor.value + " = " + i * Number(valor.value);
+    
+                var resultado = document.createElement("p")
+    
+                resultado.innerText = calc
+    
+                tabuada.appendChild(resultado)
+    
+            }
+    
+        }
+    
+    })</script>
+</html>
