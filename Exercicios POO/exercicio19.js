@@ -3,7 +3,7 @@ class Veiculo {
         this.placa = placa;
         this.modelo = modelo;
         this.capacidade = capacidade;
-        this.lotacaoAtual = 0; // Inicialmente, a lotação é zero
+        this.lotacaoAtual = 0;
     }
 
     getPlaca() {
