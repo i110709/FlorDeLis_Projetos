@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <style>
+        .contact-card {
+            border: 1px solid #ddd;
+            border-radius: .25rem;
+            padding: .75rem;
+            margin-bottom: .5rem;
+        }
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: .5rem;
+        }
+        .alphabet-divider {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+        }
+        #addContactForm {
+            display: none; 
+            margin-top: 20px;
+        }
+        .btn {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .contact-name {
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit; 
+        }
+        .favorite-icon {
+            color: black;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho e barra de pesquisa -->
+        <div class="text-center">
+            <img src="Contatos (Apresentação).png" width="100" height="100" alt="user icon" class="rounded-circle mb-3">
+            <h1>Contatos</h1>
+            
+            <!-- Barra de pesquisa com o ícone de adicionar contato -->
+            <div class="input-group mb-4">
+                <span class="input-group-text" id="addContactBtn" style="cursor: pointer;"><i class="bi bi-plus-circle"></i></span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar contatos..." aria-label="Search">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>
+        </div>
+
+        <!-- Formulário de adicionar contato -->
+        <div id="addContactForm">
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="contactName" class="form-label"><i class="bi bi-person"></i> Nome</label>
+                    <input type="text" class="form-control" id="contactName" placeholder="Digite o nome">
+                </div>
+                <div class="mb-3">
+                    <label for="contactPhone" class="form-label"><i class="bi bi-telephone"></i> Telefone</label>
+                    <input type="text" class="form-control" id="contactPhone" placeholder="Digite o telefone">
+                </div>
+                <div class="mb-3">
+                    <label for="contactEmail" class="form-label"><i class="bi bi-envelope"></i> Email</label>
+                    <input type="email" class="form-control" id="contactEmail" placeholder="Digite o email">
+                </div>
+                <div class="mb-3">
+                    <label for="favoriteContact" class="form-label"><i class="bi bi-heart"></i> <strong>Favorito</strong></label>
+                    <input type="checkbox" id="favoriteContact">
+                </div>
+                <button type="button" class="btn btn-success" onclick="saveContact()">Salvar</button>
+            </form>
+        </div>
+
+        <!-- Seção de favoritos -->
+        <div><span><i class="bi bi-heart-fill me-1 favorite-icon"></i></span> <strong>FAVORITOS</strong></div>
+        <div id="favoriteList"></div>
+
+        <!-- Lista de contatos -->
+        <div id="contactList"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para pesquisa e adição de contatos -->
+    <script>
+        class Contact {
+            constructor(name, phone, email, isFavorite = false) {
+                this.name = name;
+                this.phone = phone;
+                this.email = email;
+                this.isFavorite = isFavorite;
+            }
+
+            validate() {
+                const phoneRegex = /^\d{9}$/;  // Exemplo de regex para número de telefone
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!phoneRegex.test(this.phone)) {
+                    throw new Error("Número de telefone inválido.");
+                }
+
+                if (!emailRegex.test(this.email)) {
+                    throw new Error("Email inválido.");
+                }
+            }
+        }
+
+        let contacts = [
+            new Contact("Asafe Calebe","0811234567", "seuemail@gmail.com"),
+            new Contact("Bela Maria","0811234567", "seuemail@gmail.com"),
+            new Contact("Clara Souza","0811234567", "seuemail@gmail.com"),
+            new Contact("Diego Gomes","0811234567", "seuemail@gmail.com"),
+            new Contact("Esdras Felipe","0811234567", "seuemail@gmail.com"),
+            new Contact("Kaylane Mariz","0811234567", "seuemail@gmail.com"),
+            new Contact("Maria Lethicya","0811234567", "seuemail@gmail.com")
+
+        ];
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            var query = this.value.toLowerCase();
+            var items = document.querySelectorAll('.contact-card');
+            
+            items.forEach(function(item) {
+                var text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        function toggleAddContactForm() {
+            var form = document.getElementById('addContactForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function generateUniqueId() {
+            return 'contact' + Math.random().toString(36).substr(2, 9);
+        }
+
+        function saveContact() {
+            var name = document.getElementById('contactName').value;
+            var phone = document.getElementById('contactPhone').value;
+            var email = document.getElementById('contactEmail').value;
+            var isFavorite = document.getElementById('favoriteContact').checked;
+
+            try {
+                let newContact = new Contact(name, phone, email, isFavorite);
+                newContact.validate();
+                contacts.push(newContact);
+                renderContacts();
+                document.getElementById('contactForm').reset();
+                toggleAddContactForm();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function deleteContact(name) {
+            contacts = contacts.filter(contact => contact.name !== name);
+            renderContacts();
+        }
+
+        function renderContact(contact) {
+            var collapseId = generateUniqueId();
+
+            let newContact = document.createElement('div');
+            newContact.className = 'contact-card';
+            newContact.innerHTML = 
+                `<div class="d-flex align-items-center">
+                    <div class="contact-icon">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div>
+                        <span class="contact-name" data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" aria-controls="${collapseId}">
+                            ${contact.name}
+                        </span>
+                    </div>
+                    <button onclick="deleteContact('${contact.name}')" class="btn ms-auto"><i class="bi bi-trash"></i></button>
+                </div>
+                <div class="collapse mt-2" id="${collapseId}">
+                    <p class="contact-details">
+                        <strong>Celular:</strong> ${contact.phone}<br>
+                        <strong>Email:</strong> ${contact.email}
+                    </p>
+                </div>`;
+
+            return newContact;
+        }
+
+        function renderContacts() {
+            // Limpar listas
+            document.getElementById('contactList').innerHTML = '';
+            document.getElementById('favoriteList').innerHTML = '';
+
+            // Ordenar os contatos por nome
+            contacts.sort((a, b) => a.name.localeCompare(b.name));
+
+            let currentLetter = '';
+            
+            contacts.forEach(contact => {
+                let firstLetter = contact.name[0].toUpperCase();
+                
+                // Adicionar divisor por letra se necessário
+                if (firstLetter !== currentLetter) {
+                    currentLetter = firstLetter;
+                    let letterDivider = document.createElement('div');
+                    letterDivider.className = 'alphabet-divider';
+                    letterDivider.innerText = currentLetter;
+                    document.getElementById('contactList').appendChild(letterDivider);
+                }
+
+                let newContact = renderContact(contact);
+
+                // Adicionar contato na lista geral
+                document.getElementById('contactList').appendChild(newContact);
+
+                // Se for favorito, adicionar também à lista de favoritos
+                if (contact.isFavorite) {
+                    let favoriteClone = newContact.cloneNode(true);
+                    document.getElementById('favoriteList').appendChild(favoriteClone);
+                }
+            });
+        }
+
+        document.getElementById('addContactBtn').addEventListener('click', toggleAddContactForm);
+
+        // Renderizar contatos ao carregar a página
+        renderContacts();
+
+        // Sincronização com o servidor (exemplo de método assíncrono)
+        async function syncContacts() {
+            try {
+                const response = await fetch('https://api.seuservidor.com/contacts', {
+                    method: 'POST',
+                    body: JSON.stringify(contacts),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao sincronizar contatos.');
+                }
+
+                alert('Contatos sincronizados com sucesso!');
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
