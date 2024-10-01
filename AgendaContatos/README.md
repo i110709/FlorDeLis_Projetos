@@ -1,8 +1,3 @@
-"AgendaContatos" 
-Aqui está uma sugestão para o README do seu projeto "Agenda de Contatos", baseado no conteúdo que você forneceu:
-
----
-
 # Agenda de Contatos
 
 ## Descrição do Projeto
@@ -43,6 +38,4 @@ A "Agenda de Contatos" é uma aplicação web simples para gerenciar contatos pe
 ## Créditos e Agradecimentos
 - O projeto utiliza o Bootstrap e Bootstrap Icons para a estilização.
 - Agradecimentos à comunidade open-source pelas bibliotecas utilizadas.
-
----
 
